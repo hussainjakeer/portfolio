@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shaik Jakeer Hussain</title>
+    <!-- <link href="./src/output.css" rel="stylesheet" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#64748b',
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            15% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            85% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .skills-container {
+            position: relative;
+            min-height: auto;
+            padding: 1.8rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .skills-container {
+                min-height: 400px;
+                padding: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .skills-container {
+                min-height: 500px;
+                padding: 1rem 0;
+            }
+        }
+
+        .skills-slide {
+            position: relative;
+            width: 100%;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            padding: 1rem 0;
+        }
+
+        .skills-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        .slide-track {
+            position: relative;
+            width: 100%;
+        }
+
+        /* Remove navigation dots and animation controls */
+        .slide-dots, .animation-controls {
+            display: none;
+        }
+
+        /* Keep hover effects */
+        .skill-card {
+            transition: all 0.5s ease;
+            transform: translateZ(0);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.9rem;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .skill-card i {
+            font-size: 2.25rem;
+            margin-bottom: 0.675rem;
+            transition: transform 0.5s ease;
+        }
+
+        .skill-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .skill-card h4 {
+            font-size: 1.08rem;
+        }
+
+        /* Navigation styles */
+        .nav-link {
+            position: relative;
+            color: #4b5563;
+            transition: color 0.3s ease;
+        }
+
+        .dark .nav-link {
+            color: #d1d5db;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            background-color: #0ea5e9;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #0ea5e9;
+        }
+
+        /* Existing dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            min-width: 160px;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            overflow: hidden;
+        }
+
+        .dark .dropdown-content {
+            background-color: #1f2937;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #4b5563;
+            transition: all 0.2s ease;
+        }
+
+        .dark .dropdown-item {
+            color: #d1d5db;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+            color: #0ea5e9;
+        }
+
+        .dark .dropdown-item:hover {
+            background-color: #374151;
+        }
+
+        .dropdown-item i {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .max-w-7xl {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .max-w-7xl {
+                max-width: 95%;
+            }
+            
+            .grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .max-w-7xl {
+                max-width: 100%;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .grid-cols-3, .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-card {
+                padding: 0.75rem;
+            }
+
+            .skill-card i {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* A4 size specific adjustments */
+        @media (max-width: 210mm) {
+            .py-16 {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            .gap-7 {
+                gap: 1rem;
+            }
+
+            .mb-7 {
+                margin-bottom: 1rem;
+            }
+
+            .skill-card {
+                padding: 0.5rem;
+            }
+
+            .skill-card i {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Print specific styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .dark\:bg-gray-900, .dark\:bg-gray-800 {
+                background: white !important;
+            }
+
+            .dark\:text-white, .dark\:text-gray-300 {
+                color: black !important;
+            }
+
+            .skill-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .grid {
+                display: block;
+            }
+
+            .gap-7 {
+                gap: 0;
+            }
+
+            .mb-7 {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Add dark mode toggle styles */
+        .theme-toggle {
+            position: relative;
+            width: 3rem;
+            height: 1.5rem;
+            border-radius: 1rem;
+            background-color: #e5e7eb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dark .theme-toggle {
+            background-color: #374151;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            top: 0.125rem;
+            left: 0.125rem;
+            background-color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .theme-toggle::before {
+            transform: translateX(1.5rem);
+            background-color: #1f2937;
+        }
+
+        .theme-toggle i {
+            position: absolute;
+            font-size: 0.75rem;
+            top: 0.375rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle i.fa-sun {
+            left: 0.375rem;
+            color: #f59e0b;
+        }
+
+        .theme-toggle i.fa-moon {
+            right: 0.375rem;
+            color: #9ca3af;
+        }
+
+        .dark .theme-toggle i.fa-sun {
+            color: #9ca3af;
+        }
+
+        .dark .theme-toggle i.fa-moon {
+            color: #f59e0b;
+        }
+
+        /* Python Code Background Animations */
+        
+        /* Fade in/out animations */
+        @keyframes fadeInOut1 {
+            0%, 100% { opacity: 0; }
+            20%, 80% { opacity: 1; }
+        }
+        
+        @keyframes fadeInOut2 {
+            0%, 100% { opacity: 0; }
+            30%, 70% { opacity: 1; }
+        }
+        
+        @keyframes fadeInOut3 {
+            0%, 100% { opacity: 0; }
+            40%, 60% { opacity: 1; }
+        }
+        
+        @keyframes fadeInOut4 {
+            0%, 100% { opacity: 0; }
+            10%, 90% { opacity: 1; }
+        }
+        
+        @keyframes fadeInOut5 {
+            0%, 100% { opacity: 0; }
+            25%, 75% { opacity: 1; }
+        }
+        
+        @keyframes fadeInOut6 {
+            0%, 100% { opacity: 0; }
+            15%, 85% { opacity: 1; }
+        }
+
+        /* Typing-backspacing animations */
+        @keyframes typingBackspace1 {
+            0%, 100% { 
+                content: "";
+            }
+            10% { 
+                content: "d";
+            }
+            20% { 
+                content: "de";
+            }
+            30% { 
+                content: "def";
+            }
+            40% { 
+                content: "def ";
+            }
+            50% { 
+                content: "def t";
+            }
+            60% { 
+                content: "def tr";
+            }
+            70% { 
+                content: "def tra";
+            }
+            80% { 
+                content: "def trai";
+            }
+            90% { 
+                content: "def train";
+            }
+            100% { 
+                content: "def train_";
+            }
+        }
+        
+        @keyframes typingBackspace2 {
+            0%, 100% { 
+                content: "";
+            }
+            10% { 
+                content: "c";
+            }
+            20% { 
+                content: "cl";
+            }
+            30% { 
+                content: "cla";
+            }
+            40% { 
+                content: "clas";
+            }
+            50% { 
+                content: "class";
+            }
+            60% { 
+                content: "class ";
+            }
+            70% { 
+                content: "class D";
+            }
+            80% { 
+                content: "class Da";
+            }
+            90% { 
+                content: "class Dat";
+            }
+            100% { 
+                content: "class Data";
+            }
+        }
+        
+        @keyframes typingBackspace3 {
+            0%, 100% { 
+                content: "i";
+            }
+            2.5% { 
+                content: "i";
+            }
+            5% { 
+                content: "if";
+            }
+            7.5% { 
+                content: "if ";
+            }
+            10% { 
+                content: "if _";
+            }
+            12.5% { 
+                content: "if __";
+            }
+            15% { 
+                content: "if __n";
+            }
+            17.5% { 
+                content: "if __na";
+            }
+            20% { 
+                content: "if __nam";
+            }
+            22.5% { 
+                content: "if __name";
+            }
+            25% { 
+                content: "if __name_";
+            }
+            27.5% { 
+                content: "if __name__";
+            }
+            30% { 
+                content: "if __name__ ";
+            }
+            32.5% { 
+                content: "if __name__ =";
+            }
+            35% { 
+                content: "if __name__ ==";
+            }
+            37.5% { 
+                content: "if __name__ == ";
+            }
+            40% { 
+                content: "if __name__ == \"";
+            }
+            42.5% { 
+                content: "if __name__ == \"_";
+            }
+            45% { 
+                content: "if __name__ == \"__";
+            }
+            47.5% { 
+                content: "if __name__ == \"__m";
+            }
+            50% { 
+                content: "if __name__ == \"__main__\"";
+            }
+            52.5% { 
+                content: "if __name__ == \"__main__";
+            }
+            55% { 
+                content: "if __name__ == \"__main";
+            }
+            57.5% { 
+                content: "if __name__ == \"__ma";
+            }
+            60% { 
+                content: "if __name__ == \"__m";
+            }
+            62.5% { 
+                content: "if __name__ == \"__";
+            }
+            65% { 
+                content: "if __name__ == \"_";
+            }
+            67.5% { 
+                content: "if __name__ == \"";
+            }
+            70% { 
+                content: "if __name__ == ";
+            }
+            72.5% { 
+                content: "if __name__ ==";
+            }
+            75% { 
+                content: "if __name__ =";
+            }
+            77.5% { 
+                content: "if __name__ ";
+            }
+            80% { 
+                content: "if __name__";
+            }
+            82.5% { 
+                content: "if __name_";
+            }
+            85% { 
+                content: "if __name";
+            }
+            87.5% { 
+                content: "if __nam";
+            }
+            90% { 
+                content: "if __na";
+            }
+            92.5% { 
+                content: "if __n";
+            }
+            95% { 
+                content: "if __";
+            }
+            97.5% { 
+                content: "if _";
+            }
+            100% { 
+                content: "i";
+            }
+        }
+
+        /* Keyword animations - blinking effect */
+        @keyframes keyword1 {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes keyword2 {
+            0%, 100% { opacity: 0; }
+            30% { opacity: 1; }
+            70% { opacity: 1; }
+        }
+        
+        @keyframes keyword3 {
+            0%, 100% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+        }
+        
+        @keyframes keyword4 {
+            0%, 100% { opacity: 0; }
+            40% { opacity: 1; }
+            60% { opacity: 1; }
+        }
+        
+        @keyframes keyword5 {
+            0%, 100% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+        }
+        
+        @keyframes keyword6 {
+            0%, 100% { opacity: 0; }
+            25% { opacity: 1; }
+            75% { opacity: 1; }
+        }
+
+        /* Library name animations - scale and fade */
+        @keyframes library1 {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes library2 {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            60% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes library3 {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            40% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes library4 {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            70% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes library5 {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            30% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes library6 {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Animation classes */
+        .animate-fade-in-out-1 { animation: fadeInOut1 8s infinite; }
+        .animate-fade-in-out-2 { animation: fadeInOut2 10s infinite; }
+        .animate-fade-in-out-3 { animation: fadeInOut3 12s infinite; }
+        .animate-fade-in-out-4 { animation: fadeInOut4 9s infinite; }
+        .animate-fade-in-out-5 { animation: fadeInOut5 11s infinite; }
+        .animate-fade-in-out-6 { animation: fadeInOut6 7s infinite; }
+        
+        .animate-typewriter-1 { animation: typingBackspace1 8s infinite; }
+        .animate-typewriter-2 { animation: typingBackspace2 10s infinite; }
+        .animate-typewriter-3 { animation: typingBackspace3 6s infinite; }
+        
+        /* Typing element styles */
+        .typing-element-1::before {
+            content: "";
+            animation: typingBackspace1 8s infinite;
+        }
+        
+        .typing-element-2::before {
+            content: "";
+            animation: typingBackspace2 10s infinite;
+        }
+        
+        .typing-element-3::before {
+            content: "";
+            animation: typingBackspace3 6s infinite;
+        }
+        
+        /* Animation for "import pytorch" */
+        @keyframes typingBackspace4 {
+            0%, 100% { 
+                content: "";
+            }
+            5% { 
+                content: "i";
+            }
+            10% { 
+                content: "im";
+            }
+            15% { 
+                content: "imp";
+            }
+            20% { 
+                content: "impo";
+            }
+            25% { 
+                content: "impor";
+            }
+            30% { 
+                content: "import";
+            }
+            35% { 
+                content: "import ";
+            }
+            40% { 
+                content: "import p";
+            }
+            45% { 
+                content: "import py";
+            }
+            50% { 
+                content: "import pyt";
+            }
+            55% { 
+                content: "import pyto";
+            }
+            60% { 
+                content: "import pytor";
+            }
+            65% { 
+                content: "import pytorc";
+            }
+            70% { 
+                content: "import pytorch";
+            }
+            75% { 
+                content: "import pytorc";
+            }
+            80% { 
+                content: "import pytor";
+            }
+            85% { 
+                content: "import pyto";
+            }
+            90% { 
+                content: "import pyt";
+            }
+            95% { 
+                content: "import py";
+            }
+            100% { 
+                content: "";
+            }
+        }
+        
+        .animate-typewriter-4 { animation: typingBackspace4 5s infinite; }
+        
+        .typing-element-4::before {
+            content: "";
+            animation: typingBackspace4 5s infinite;
+        }
+        
+        .animate-keyword-1 { animation: keyword1 4s infinite; }
+        .animate-keyword-2 { animation: keyword2 5s infinite; }
+        .animate-keyword-3 { animation: keyword3 6s infinite; }
+        .animate-keyword-4 { animation: keyword4 4.5s infinite; }
+        .animate-keyword-5 { animation: keyword5 5.5s infinite; }
+        .animate-keyword-6 { animation: keyword6 3.5s infinite; }
+        
+        .animate-library-1 { animation: library1 9s infinite; }
+        .animate-library-2 { animation: library2 11s infinite; }
+        .animate-library-3 { animation: library3 10s infinite; }
+        .animate-library-4 { animation: library4 8.5s infinite; }
+        .animate-library-5 { animation: library5 12s infinite; }
+        .animate-library-6 { animation: library6 7.5s infinite; }
+        
+        /* Professional Font Styles */
+        .hero-description {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        
+        .about-description {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+        }
+        
+        .key-points-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        
+        .key-points-description {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        /* Fix for certification links */
+        .certification-link {
+            display: inline-block !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            text-decoration: none !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        
+        .certification-link:hover {
+            text-decoration: underline !important;
+            transform: translateY(-1px) !important;
+        }
+        
+        /* Fix for project links */
+        .project-link {
+            display: inline-block !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            text-decoration: none !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline !important;
+            transform: translateY(-1px) !important;
+        }
+        
+        /* Fix for contact links */
+        .contact-link {
+            display: inline-block !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            text-decoration: none !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-1px) !important;
+        }
+        
+        /* Fix for contact button */
+        .contact-button {
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        
+        /* Fix for contact form inputs */
+        .contact-form input,
+        .contact-form textarea {
+            cursor: text !important;
+            pointer-events: auto !important;
+            position: relative !important;
+            z-index: 20 !important;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+        }
+
+
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none !important;
+            border-color: #0ea5e9 !important;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
+            z-index: 25 !important;
+        }
+        
+        /* Ensure form container is clickable */
+        .contact-form {
+            position: relative !important;
+            z-index: 15 !important;
+        }
+        
+        /* Additional fix for contact inputs */
+        .contact-input {
+            cursor: text !important;
+            pointer-events: auto !important;
+            position: relative !important;
+            z-index: 30 !important;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            background-color: white !important;
+        }
+        
+        .dark .contact-input {
+            background-color: #374151 !important;
+        }
+        
+        .contact-input:focus {
+            outline: none !important;
+            border-color: #0ea5e9 !important;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
+            z-index: 35 !important;
+        }
+    </style>
+    </style>
+    </style>
+    </style>
+    </style>
+  </head>
+  
+
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <nav class="fixed w-full z-50 flex justify-center">
+        <div class="bg-white/40 dark:bg-gray-800/40 backdrop-blur-md shadow-lg rounded-full px-8 py-3 mt-4 mx-4 transition-all duration-300" id="navbar">
+            <!-- Centered Navigation -->
+                        <div class="flex items-center space-x-1 sm:space-x-4 md:space-x-8">
+                <a href="#about" class="nav-link px-3 py-2" data-section="about">About</a>
+                <a href="#skills" class="nav-link px-3 py-2" data-section="skills">Skills</a>
+                <a href="#experience" class="nav-link px-3 py-2" data-section="experience">Experiences</a>
+                <a href="#certifications" class="nav-link px-3 py-2" data-section="certifications">Certifications</a>
+                <a href="#projects" class="nav-link px-3 py-2" data-section="projects">Projects</a>
+                <a href="#contact" class="nav-link px-3 py-2" data-section="contact">Contact</a>
+                    <div class="dropdown px-3 py-2">
+                        <button class="text-gray-600 dark:text-gray-300 hover:text-primary flex items-center">
+                            Resume
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1LuwXILG-KkMAM2mFNf56figP5aKouaaJ/view?usp=sharing" target="_blank" class="dropdown-item">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </a>
+                            <a href="https://drive.google.com/uc?export=download&id=1LuwXILG-KkMAM2mFNf56figP5aKouaaJ" class="dropdown-item">
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="theme-toggle ml-2" aria-label="Toggle dark mode">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- {% block content %}{% endblock %} -->
+    <!-- Hero Section with Fixed Background -->
+<section id="hero" class="relative min-h-screen">
+    <!-- Fixed Background with Animations -->
+    <div id="hero-background" class="fixed inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-gray-900 dark:to-gray-800 z-0 transition-opacity duration-1000">
+        <!-- Animated Python Code Background -->
+        <div class="absolute inset-0 opacity-25 dark:opacity-25 opacity-40 pointer-events-none">
+            <!-- Fade in/out animations -->
+            <div class="absolute top-20 left-10 text-white font-mono text-sm animate-fade-in-out-1">import pandas as pd</div>
+            <div class="absolute top-40 right-20 text-white font-mono text-sm animate-fade-in-out-2">import numpy as np</div>
+            <div class="absolute top-60 left-20 text-white font-mono text-sm animate-fade-in-out-3">import matplotlib.pyplot as plt</div>
+            <div class="absolute top-80 left-1/3 text-white font-mono text-sm animate-typewriter-4 typing-element-4"></div>
+            <div class="absolute top-80 right-10 text-white font-mono text-sm animate-fade-in-out-4">from sklearn.model_selection import train_test_split</div>
+            <div class="absolute top-32 left-1/3 text-white font-mono text-sm animate-fade-in-out-5">import tensorflow as tf</div>
+            <div class="absolute top-52 right-1/3 text-white font-mono text-sm animate-fade-in-out-6">import seaborn as sns</div>
+            
+            <!-- Typewriter animations -->
+            <div class="absolute bottom-40 left-10 text-white font-mono text-sm animate-typewriter-1 typing-element-1"></div>
+            <div class="absolute bottom-60 right-20 text-white font-mono text-sm animate-typewriter-2 typing-element-2"></div>
+            
+            <!-- Keywords animations -->
+            <div class="absolute top-1/4 left-1/2 text-white font-mono text-sm animate-keyword-1">for</div>
+            <div class="absolute top-1/3 right-1/4 text-white font-mono text-sm animate-keyword-2">while</div>
+            <div class="absolute top-1/2 left-1/6 text-white font-mono text-sm animate-keyword-3">try</div>
+            <div class="absolute top-2/3 right-1/6 text-white font-mono text-sm animate-keyword-4">except</div>
+            <div class="absolute bottom-1/4 left-1/3 text-white font-mono text-sm animate-keyword-5">return</div>
+            <div class="absolute bottom-1/3 right-1/3 text-white font-mono text-sm animate-keyword-6">yield</div>
+            
+            <!-- Library names animations -->
+            <div class="absolute top-1/6 left-1/4 text-white font-mono text-sm animate-library-1">pandas</div>
+            <div class="absolute top-1/5 right-1/5 text-white font-mono text-sm animate-library-2">numpy</div>
+            <div class="absolute top-2/5 left-1/5 text-white font-mono text-sm animate-library-3">scikit-learn</div>
+            <div class="absolute top-3/5 right-1/5 text-white font-mono text-sm animate-library-4">tensorflow</div>
+            <div class="absolute bottom-1/5 left-1/5 text-white font-mono text-sm animate-library-5">pytorch</div>
+            <div class="absolute bottom-2/5 right-1/4 text-white font-mono text-sm animate-library-6">opencv</div>
+        </div>
+    </div>
+    
+    <!-- Scrollable Content -->
+    <div class="relative z-10 min-h-screen flex items-center justify-center">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+            <div class="text-center">
+                <!-- Profile Image -->
+                <div class="mx-auto w-72 h-72 mb-7 mt-8 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl">
+                    <img src="./assets/images/jakeer_hussain_3.png" alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <h1 class="text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+                    Data Scientist
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl hero-description">
+                    Data Scientist with a strong foundation in Machine Learning, Deep Learning, NLP, and Data Analysis. Passionate about leveraging data to build innovative solutions and drive actionable insights.
+                </p>
+                <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                    <div class="rounded-md shadow mr-4">
+                        <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+                            Get in touch
+                        </a>
+                    </div>
+                    <div class="rounded-md shadow">
+                        <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=shaik-jakeer-hussain" target="_blank" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+                            Follow on LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <!-- Python code below Get in Touch button -->
+                <div class="mt-8 text-center">
+                    <div class="text-white font-mono text-sm animate-typewriter-3 typing-element-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-16 bg-white dark:bg-gray-800 min-h-screen md:min-h-screen lg:min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">About Me</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Profile Image -->
+            <div class="relative">
+                <div class="w-96 h-96 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-xl">
+                    <img src="./assets/images/jakeer_hussain_1.png" alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-4 -right-4 bg-primary text-white p-3 rounded-full shadow-lg">
+                    <i class="fas fa-code text-xl"></i>
+                </div>
+            </div>
+
+            <!-- About Content -->
+            <div class="space-y-6">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Hello, I'm Jakeer Hussain</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 about-description">
+                        I'm a Data Scientist with a strong foundation in Machine Learning, Natural Language Processing, and Data Analysis. 
+                        Holding a B.Tech in Computer Science, I have further honed my skills through specialized training in Data Science. 
+                        My passion lies in uncovering hidden patterns within data and transforming them into innovative, actionable solutions.
+                        With hands-on experience in Python, Machine Learning, Deep Learning, and Generative AI, 
+                        I thrive on solving real-world challenges and turning complex datasets into valuable insights. 
+                    
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed about-description">
+                        I'm deeply committed to continuous learning and enjoy staying at the cutting edge of the field by exploring new topics and 
+                        reading extensively about emerging trends in data science.
+                    </p>
+                </div>
+
+                <!-- Key Points -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 dark:text-white key-points-text">Education</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 key-points-description">B.Tech in Computer Science</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-briefcase text-primary text-xl"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 dark:text-white key-points-text">Experience</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 key-points-description">1.5+ years</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-code-branch text-primary text-xl"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 dark:text-white key-points-text">Personal Projects</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 key-points-description">10+ Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow-md">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-certificate text-primary text-xl"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 dark:text-white key-points-text">Certifications</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 key-points-description">5 Achieved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-8 md:py-16 bg-gray-50 dark:bg-gray-900 min-h-screen md:min-h-screen lg:min-h-screen">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div class="text-center mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">Skills & Technologies</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7">
+            <!-- Programming -->
+            <div class="skills-slide active">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-7 text-center">Programming</h3>
+                <div class="grid grid-cols-2 gap-3 md:gap-5">
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fab fa-python text-3xl md:text-4.5xl text-blue-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Python</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-database text-3xl md:text-4.5xl text-blue-400 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">MySQL</h4>
+                    </div>
+                    <!-- <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fab fa-js text-3xl md:text-4.5xl text-yellow-400 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">JavaScript</h4>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="skills-slide">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-7 text-center">Web Development</h3>
+                <div class="grid grid-cols-2 gap-3 md:gap-5">
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-stream text-3xl md:text-4.5xl text-red-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Streamlit</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-server text-3xl md:text-4.5xl text-green-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Flask</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fab fa-html5 text-3xl md:text-4.5xl text-orange-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">HTML/CSS</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fab fa-css3 text-3xl md:text-4.5xl text-blue-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Tailwind CSS</h4>
+                    </div>
+                    <!-- <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fab fa-js-square text-3xl md:text-4.5xl text-yellow-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">JS</h4>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Data Science -->
+            <div class="skills-slide">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-7 text-center">Data Analysis</h3>
+                <div class="grid grid-cols-2 gap-3 md:gap-5">
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-calculator text-3xl md:text-4.5xl text-blue-600 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">NumPy</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-table text-3xl md:text-4.5xl text-green-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Pandas</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-chart-line text-3xl md:text-4.5xl text-purple-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Matplotlib</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-chart-bar text-3xl md:text-4.5xl text-blue-400 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Tableau</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="skills-slide">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-7 text-center">Machine Learning</h3>
+                <div class="grid grid-cols-2 gap-3 md:gap-5">
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-brain text-3xl md:text-4.5xl text-purple-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Scikit-learn</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-chart-line text-3xl md:text-4.5xl text-blue-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Regression</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-sitemap text-3xl md:text-4.5xl text-green-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Classification</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-project-diagram text-3xl md:text-4.5xl text-red-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Clustering</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Learning -->
+            <div class="skills-slide">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-7 text-center">Deep Learning</h3>
+                <div class="grid grid-cols-2 gap-3 md:gap-5">
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-network-wired text-3xl md:text-4.5xl text-orange-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">TensorFlow</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-fire text-3xl md:text-4.5xl text-red-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">PyTorch</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-language text-3xl md:text-4.5xl text-green-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">NLTK/Spacy</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-eye text-3xl md:text-4.5xl text-blue-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Computer Vision</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LLMs & Gen-AI -->
+            <div class="skills-slide">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-7 text-center">LLMs & Gen-AI</h3>
+                <div class="grid grid-cols-2 gap-3 md:gap-5">
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-code-branch text-3xl md:text-4.5xl text-purple-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">Transformers</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <span class="text-3xl md:text-4.5xl mb-2 md:mb-3.6 block">🤗</span>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">HuggingFace</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-robot text-3xl md:text-4.5xl text-blue-500 mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">OpenAI</h4>
+                    </div>
+                    <div class="skill-card bg-white dark:bg-gray-800 shadow-lg rounded-xl p-3 md:p-5 text-center">
+                        <i class="fas fa-robot text-3xl md:text-4.5xl text-black mb-2 md:mb-3.6"></i>
+                        <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-white">AI Agents</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Experience Section -->
+<section id="experience" class="py-16 bg-white dark:bg-gray-800 min-h-screen md:min-h-screen lg:min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">Work Experience</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="space-y-12">
+            <!-- Freelance Experience -->
+            <div class="relative pl-8 border-l-2 border-primary">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-primary rounded-full"></div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Freelance Data Scientist</h3>
+                            <h4 class="text-lg md:text-xl font-semibold text-primary mt-1">Freelance Contract</h4>
+                        </div>
+                        <span class="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 md:mt-0 font-medium">07/2024 - 03/2025</span>
+                    </div>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Worked on a <span class="font-bold italic">SaaS product</span> for a client using <span class="font-bold italic">Flask</span> framework, creating APIs for the web application.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Used <span class="font-bold italic">Google Search Console APIs</span> to fetch data from GSC.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Developed <span class="font-bold italic">AI-powered features</span> to automate processes and provide intelligent insights to users.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Implemented <span class="font-bold italic">data analytics</span> and <span class="font-bold italic">machine learning models</span> on the data fetched from GSC.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lead Sementics -->
+            <div class="relative pl-8 border-l-2 border-primary">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-primary rounded-full"></div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Lead Sementics</h3>
+                            <h4 class="text-lg md:text-xl font-semibold text-primary mt-1">Data Scientist Intern</h4>
+                        </div>
+                        <span class="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 md:mt-0 font-medium">02/2024 - 06/2024</span>
+                    </div>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Worked with <span class="font-bold italic">Natural Language Processing (NLP)</span> using <span class="font-bold italic">Spacy</span> to build custom models for specific tasks.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Created and preprocessed datasets to train and test <span class="font-bold italic">NLP</span> models.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Implemented prompts and functions using <span class="font-bold italic">OpenAI APIs</span> for a variety of <span class="font-bold italic">NLP</span> tasks.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Innomatics Research Labs -->
+            <div class="relative pl-8 border-l-2 border-primary">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-primary rounded-full"></div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Innomatics Research Labs</h3>
+                            <h4 class="text-lg md:text-xl font-semibold text-primary mt-1">Data Scientist Intern</h4>
+                        </div>
+                        <span class="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 md:mt-0 font-medium">02/2023 - 05/2023</span>
+                    </div>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Utilized <span class="font-bold italic">Python</span> and libraries like <span class="font-bold italic">Pandas</span>, <span class="font-bold italic">NumPy</span>, and <span class="font-bold italic">Matplotlib</span> for <span class="font-bold italic">Data Cleaning</span>, <span class="font-bold italic">Visualization</span>, and <span class="font-bold italic">Data Analysis</span>.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Built best <span class="font-bold italic">Machine Learning</span> models for prediction purposes using <span class="font-bold italic">Scikit-Learn</span>.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">●</span>
+                            <span>Developed Interactive web applications using <span class="font-bold italic">Streamlit</span> and <span class="font-bold italic">Flask</span> frameworks, integrating them with <span class="font-bold italic">Machine Learning</span> models for real-time predictions.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section id="certifications" class="py-16 bg-gray-50 dark:bg-gray-900 min-h-screen md:min-h-screen lg:min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">Certifications</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Certification 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-green-600 dark:text-green-400 text-xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Exploratory Data Analysis and Model Building using Python Libraries</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Advanced data analysis techniques and model building using Python libraries like Pandas, NumPy, and Scikit-learn.</p>
+                <div class="flex-1"></div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-sm font-medium text-primary">Innomatics Research Labs</span>
+                    <a href="https://drive.google.com/file/d/17EsKXaA5Pt2z4LgUiCcp1Nyf_KlyrcE4/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium cursor-pointer transition-colors duration-200 certification-link">
+                        View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certification 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-brain text-blue-600 dark:text-blue-400 text-xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Machine Learning with Python</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Comprehensive machine learning certification covering algorithms, model building, and Python implementation.</p>
+                <div class="space-y-2 mb-4">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Issued Oct 2023</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Credential ID: c60948a5a5a34fecbf9e6e9c3feb78a6</p>
+                </div>
+                <div class="flex-1"></div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-sm font-medium text-primary">IBM</span>
+                    <a href="https://www.credly.com/badges/dacfcde7-375c-4245-8cce-57086ca2fb87/public_url" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium cursor-pointer transition-colors duration-200 certification-link">
+                        View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certification 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-certificate text-purple-600 dark:text-purple-400 text-xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Certification in Data Science</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Comprehensive data science certification covering statistics, machine learning, and data analysis fundamentals.</p>
+                <div class="flex-1"></div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-sm font-medium text-primary">Innomatics Research Labs</span>
+                    <a href="https://drive.google.com/file/d/1B8Xj3kZfQlrZHGM3YKUrNrhJsFc7G46q/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium cursor-pointer transition-colors duration-200 certification-link">
+                        View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certification 4 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-eye text-orange-600 dark:text-orange-400 text-xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Certificate of Excellence in OpenCV Bootcamp</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Advanced computer vision certification covering OpenCV implementation, image processing, and computer vision applications.</p>
+                <div class="space-y-2 mb-4">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Issued Oct 2023</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Credential ID: 79657f8b3f0e4ae097e378a30bdec08e</p>
+                </div>
+                <div class="flex-1"></div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-sm font-medium text-primary">OpenCV University</span>
+                    <a href="https://courses.opencv.org/certificates/79657f8b3f0e4ae097e378a30bdec08e" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium cursor-pointer transition-colors duration-200 certification-link">
+                        View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-8 md:py-16 bg-white dark:bg-gray-800 min-h-screen md:min-h-screen lg:min-h-screen">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div class="text-center mb-8 md:mb-10">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">Featured Projects</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            <!-- Project 1 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="assets/images/chatbot.jpg" alt="Project 1" class="object-cover w-full h-full">
+                </div>
+                <div class="p-4 md:p-6">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">AI Research Paper Assistant</h3>
+                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">An intelligent web application that lets you upload academic PDFs (research papers, Books, etc.) and interact with them using natural language. You can ask questions about the content and get summaries — powered by OpenAI, LangChain, and FAISS.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Langchain</span>
+                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">OpenAI</span>
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">VectorDB</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">FAISS</span>
+                        <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm">GenAI</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/hussainjakeer/research_assistant" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 project-link">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/hussainjakeer/research_assistant" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://github.com/hussainjakeer/research_assistant" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="assets/images/NLP.jpg" alt="Project 2" class="object-cover w-full h-full">
+                </div>
+                <div class="p-4 md:p-6">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">NLP Next Word Prediction</h3>
+                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">An advanced Natural Language Processing project that predicts the next word in a sequence using deep learning. Built with TensorFlow, this model learns from large text corpora to understand context and generate accurate predictions. The system uses sophisticated NLP techniques for text preprocessing and implements state-of-the-art neural network architectures for sequence prediction.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">TensorFlow</span>
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">NLP</span>
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">Pandas</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">SKLearn</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/hussainjakeer/Deep-Learning-Projects/blob/main/NLP/Next_Word_prediction.ipynb" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 project-link">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/hussainjakeer/Deep-Learning-Projects/blob/main/NLP/Next_Word_prediction.ipynb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://github.com/hussainjakeer/Deep-Learning-Projects/blob/main/NLP/Next_Word_prediction.ipynb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="assets/images/BI.png" alt="Project 2" class="object-cover w-full h-full">
+                </div>
+                <div class="p-4 md:p-6">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">Data Analytics Dashboard</h3>
+                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">Interactive dashboard for Uber Data using PowerBI, DAX Functions, Dashboard.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Data Cleaning</span>
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">PowerBI</span>
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">DAX Functions</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/hussainjakeer/Uber_BI_Dashboaard/blob/main/Ubar.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 project-link">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/hussainjakeer/Uber_BI_Dashboaard/blob/main/Ubar.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://github.com/hussainjakeer/Uber_BI_Dashboaard/blob/main/Ubar.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="assets/images/Quora.svg" alt="Project 3" class="object-cover w-full h-full p-5">
+                </div>
+                <div class="p-4 md:p-6">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">Quora Question pair similarity</h3>
+                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">A sophisticated NLP project that analyzes and determines the semantic similarity between pairs of questions from Quora. The system uses advanced machine learning techniques to identify duplicate or similar questions, helping to improve content quality and user experience. The project involves text preprocessing, feature engineering, and implementing deep learning models to accurately predict question similarity scores.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">TensorFlow</span>
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">NLP</span>
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">NLTK</span>
+                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Machine Learning</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">MLOps</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/hussainjakeer/Quora_Question_pair_similarity/blob/main/Quora%20Question%20Pair%20Similarity.ipynb" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 project-link">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/hussainjakeer/Quora_Question_pair_similarity/blob/main/Quora%20Question%20Pair%20Similarity.ipynb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://github.com/hussainjakeer/Quora_Question_pair_similarity/blob/main/Quora%20Question%20Pair%20Similarity.ipynb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 contact-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="pt-16 pb-8 bg-gray-100 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+                Get in Touch
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                I'm always open to new opportunities and collaborations.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form - Shows first on mobile -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6 order-1 lg:order-2">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Message</h3>
+                <form class="space-y-6 contact-form" id="contactForm">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-300 contact-input"
+                            placeholder="your.email@example.com"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Subject
+                        </label>
+                        <input 
+                            type="text" 
+                            id="subject" 
+                            name="subject" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-300 contact-input"
+                            placeholder="What's this about?"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Message
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="5" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-300 resize-none contact-input"
+                            placeholder="Tell me about your project or opportunity..."
+                        ></textarea>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 text-sm contact-button"
+                    >
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Info - Shows second on mobile -->
+            <div class="text-center lg:text-left order-2 lg:order-1">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-8">
+                    Feel free to reach out through any of these channels or use the contact form.
+                </p>
+                <div class="hidden lg:block space-y-6">
+                    <!-- Desktop: Full info -->
+                    <div class="flex items-center justify-start space-x-4">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hussainjakeer760@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 contact-link">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                        <div>
+                            <p class="font-semibold text-gray-900 dark:text-white">Email</p>
+                            <p class="text-gray-600 dark:text-gray-300">hussainjakeer760@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <a href="https://www.linkedin.com/in/shaik-jakeer-hussain/" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 contact-link">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <div>
+                            <p class="font-semibold text-gray-900 dark:text-white">LinkedIn</p>
+                            <p class="text-gray-600 dark:text-gray-300">shaik-jakeer-hussain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <a href="https://github.com/hussainjakeer" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 contact-link">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <div>
+                            <p class="font-semibold text-gray-900 dark:text-white">GitHub</p>
+                            <p class="text-gray-600 dark:text-gray-300">hussainjakeer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile: Horizontal icons only -->
+                <div class="flex justify-center space-x-8 lg:hidden mt-6">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hussainjakeer760@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 contact-link">
+                        <i class="fas fa-envelope text-3xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shaik-jakeer-hussain/" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 contact-link">
+                        <i class="fab fa-linkedin text-3xl"></i>
+                    </a>
+                    <a href="https://github.com/hussainjakeer" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 contact-link">
+                        <i class="fab fa-github text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+        
+        </div>
+        
+        <div class="text-center mt-12 mb-5">
+            <p class="text-gray-600 dark:text-gray-300">&copy; 2024 Shaik Jakeer Hussain. All rights reserved.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.getElementById('navbar');
+
+            function setActiveLink() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 300)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Set active link on scroll
+            window.addEventListener('scroll', setActiveLink);
+            
+            // Set active link on page load
+            setActiveLink();
+
+                    // Handle navbar background on scroll
+        function handleNavbarScroll() {
+            if (window.scrollY > 10) {
+                navbar.classList.remove('bg-white/40', 'dark:bg-gray-800/40');
+                navbar.classList.add('bg-white/5', 'dark:bg-gray-800/5', 'backdrop-blur-xl');
+            } else {
+                navbar.classList.remove('bg-white/5', 'dark:bg-gray-800/5', 'backdrop-blur-xl');
+                navbar.classList.add('bg-white/40', 'dark:bg-gray-800/40', 'backdrop-blur-md');
+            }
+        }
+
+        window.addEventListener('scroll', handleNavbarScroll);
+        handleNavbarScroll();
+
+        // Handle hero background visibility
+        function handleHeroBackground() {
+            const heroBackground = document.getElementById('hero-background');
+            const aboutSection = document.getElementById('about');
+            
+            if (aboutSection) {
+                const aboutTop = aboutSection.offsetTop;
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+                
+                // Start hiding when we reach the about section
+                if (scrollY >= aboutTop - windowHeight) {
+                    const opacity = Math.max(0, 1 - (scrollY - (aboutTop - windowHeight)) / windowHeight);
+                    heroBackground.style.opacity = opacity;
+                } else {
+                    heroBackground.style.opacity = 1;
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleHeroBackground);
+        handleHeroBackground();
+
+            // Handle smooth scrolling
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved theme preference or use system preference
+        const currentTheme = localStorage.getItem('theme') || 
+            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Listen for system theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.classList.toggle('dark', e.matches);
+            }
+        });
+
+        // Contact form functionality
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create Gmail compose URL with form data
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hussainjakeer760@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${email}\n\nMessage:\n${message}`)}`;
+            
+            // Open Gmail in new tab
+            window.open(gmailUrl, '_blank');
+            
+            // Show success message
+            alert('Opening Gmail... Please send the email to complete the process.');
+        });
+    </script>
+</body>
+</html>
